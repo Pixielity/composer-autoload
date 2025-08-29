@@ -1,0 +1,11 @@
+{
+    "name": "ComposerAutoload",
+    "alias": "composerautoload",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\ComposerAutoload\\Providers\\ComposerAutoloadServiceProvider"
+    ],
+    "files": []
+}

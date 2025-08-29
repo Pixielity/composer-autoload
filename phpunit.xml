@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/11.5/phpunit.xsd"
+         bootstrap="tests/bootstrap.php"
+         colors="true"
+         cacheDirectory=".phpunit.cache"
+         executionOrder="depends,defects"
+         requireCoverageMetadata="true"
+         beStrictAboutCoverageMetadata="true"
+         beStrictAboutOutputDuringTests="true"
+         failOnRisky="true"
+         failOnWarning="true">
+    <testsuites>
+        <testsuite name="ComposerAutoload Test Suite">
+            <directory suffix="Test.php">tests</directory>
+        </testsuite>
+        <testsuite name="Unit">
+            <directory suffix="Test.php">tests/Unit</directory>
+        </testsuite>
+        <testsuite name="Feature">
+            <directory suffix="Test.php">tests/Feature</directory>
+        </testsuite>
+    </testsuites>
+    <source>
+        <include>
+            <directory suffix=".php">src</directory>
+        </include>
+        <exclude>
+            <directory>src/Examples</directory>
+            <file>src/Examples/demo.php</file>
+        </exclude>
+    </source>
+    <coverage>
+        <report>
+            <html outputDirectory="coverage-html" lowUpperBound="50" highLowerBound="90"/>
+            <clover outputFile="coverage-clover.xml"/>
+            <text outputFile="php://stdout" showUncoveredFiles="true"/>
+        </report>
+    </coverage>
+    <php>
+        <env name="APP_ENV" value="testing"/>
+        <env name="APP_KEY" value="base64:2fl+Ktvkfl+Fuz4Qp/A75G2RTiWVA/ZoKGFOaKQ3XDU="/>
+        <env name="COMPOSER_AUTOLOAD_AUTO_REGISTER" value="false"/>
+        <env name="COMPOSER_AUTOLOAD_DISCOVERY_ENABLED" value="true"/>
+        <env name="COMPOSER_AUTOLOAD_CACHE" value="false"/>
+        <env name="COMPOSER_AUTOLOAD_DEBUG" value="true"/>
+    </php>
+</phpunit>

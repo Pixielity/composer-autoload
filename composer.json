@@ -1,0 +1,93 @@
+{
+    "name": "akouta/composer-autoload",
+    "description": "A powerful Laravel package for advanced autoloading with PSR-4 compliance, dynamic module discovery, and Magento 2-inspired architecture",
+    "type": "library",
+    "keywords": [
+        "laravel",
+        "autoload",
+        "psr-4",
+        "autoloader",
+        "composer",
+        "modules",
+        "namespace",
+        "classmap",
+        "discovery"
+    ],
+    "license": "MIT",
+    "homepage": "https://github.com/akouta/composer-autoload",
+    "support": {
+        "issues": "https://github.com/akouta/composer-autoload/issues",
+        "source": "https://github.com/akouta/composer-autoload",
+        "docs": "https://github.com/akouta/composer-autoload/blob/main/README.md"
+    },
+    "authors": [
+        {
+            "name": "Ahmed Kouta",
+            "email": "dev@akouta.com",
+            "homepage": "https://akouta.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.0",
+        "illuminate/support": "^12.0",
+        "nwidart/laravel-modules": "*",
+        "illuminate/container": "^12.0",
+        "composer/composer": "^2.0"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.24",
+        "mockery/mockery": "^1.4",
+        "orchestra/testbench": "^10.0",
+        "phpunit/phpunit": "^11.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\ComposerAutoload\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\ComposerAutoload\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Modules\\ComposerAutoload\\Providers\\ComposerAutoloadServiceProvider"
+            ],
+            "aliases": {
+                "ComposerAutoload": "Modules\\ComposerAutoload\\Facades\\ComposerAutoloadFacade"
+            }
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage",
+        "format": "vendor/bin/pint",
+        "format-check": "vendor/bin/pint --test",
+        "analyse": "vendor/bin/phpstan analyse",
+        "quality": [
+            "@format-check",
+            "@test"
+        ],
+        "post-autoload-dump": [
+            "Modules\\ComposerAutoload\\Installer\\ComposerAutoloadInstaller::install"
+        ],
+        "post-install-cmd": [
+            "Modules\\ComposerAutoload\\Installer\\ComposerAutoloadInstaller::install"
+        ],
+        "post-update-cmd": [
+            "Modules\\ComposerAutoload\\Installer\\ComposerAutoloadInstaller::install"
+        ]
+    },
+    "config": {
+        "sort-packages": true,
+        "optimize-autoloader": true,
+        "allow-plugins": {
+            "wikimedia/composer-merge-plugin": true
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
