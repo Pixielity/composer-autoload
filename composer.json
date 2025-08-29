@@ -1,5 +1,5 @@
 {
-    "name": "akouta/composer-autoload",
+    "name": "pixielity/composer-autoload",
     "description": "A powerful Laravel package for advanced autoloading with PSR-4 compliance, dynamic module discovery, and Magento 2-inspired architecture",
     "type": "library",
     "keywords": [
@@ -14,17 +14,17 @@
         "discovery"
     ],
     "license": "MIT",
-    "homepage": "https://github.com/akouta/composer-autoload",
+    "homepage": "https://github.com/pixielity/composer-autoload",
     "support": {
-        "issues": "https://github.com/akouta/composer-autoload/issues",
-        "source": "https://github.com/akouta/composer-autoload",
-        "docs": "https://github.com/akouta/composer-autoload/blob/main/README.md"
+        "issues": "https://github.com/pixielity/composer-autoload/issues",
+        "source": "https://github.com/pixielity/composer-autoload",
+        "docs": "https://github.com/pixielity/composer-autoload/blob/main/README.md"
     },
     "authors": [
         {
             "name": "Ahmed Kouta",
-            "email": "dev@akouta.com",
-            "homepage": "https://akouta.com",
+            "email": "dev@pixielity.com",
+            "homepage": "https://pixielity.com",
             "role": "Developer"
         }
     ],
