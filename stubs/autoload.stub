@@ -14,9 +14,9 @@ $composerAutoloader = require __DIR__.'/../vendor/autoload.php';
 
 // Our ComposerAutoload module classes are now available via Composer's PSR-4 autoloading
 
-use Modules\ComposerAutoload\Services\AutoloaderManager;
-use Modules\ComposerAutoload\Services\ConfigurableDiscoveryManager;
-use Modules\ComposerAutoload\Config\AutoloadConfig;
+use Pixielity\ComposerAutoload\Services\AutoloaderManager;
+use Pixielity\ComposerAutoload\Services\ConfigurableDiscoveryManager;
+use Pixielity\ComposerAutoload\Config\AutoloadConfig;
 
 // Create and configure our custom autoloader
 $autoloader = new AutoloaderManager();

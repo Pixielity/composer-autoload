@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Modules\ComposerAutoload\Config;
+namespace Pixielity\ComposerAutoload\Config;
 
 use InvalidArgumentException;
-use Modules\ComposerAutoload\Interfaces\ConfigInterface;
+use Pixielity\ComposerAutoload\Interfaces\ConfigInterface;
 
 /**
  * Class AutoloadConfig

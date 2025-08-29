@@ -43,21 +43,21 @@
     },
     "autoload": {
         "psr-4": {
-            "Modules\\ComposerAutoload\\": "src/"
+            "Pixielity\\ComposerAutoload\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Modules\\ComposerAutoload\\Tests\\": "tests/"
+            "Pixielity\\ComposerAutoload\\Tests\\": "tests/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Modules\\ComposerAutoload\\Providers\\ComposerAutoloadServiceProvider"
+                "Pixielity\\ComposerAutoload\\Providers\\ComposerAutoloadServiceProvider"
             ],
             "aliases": {
-                "ComposerAutoload": "Modules\\ComposerAutoload\\Facades\\ComposerAutoloadFacade"
+                "ComposerAutoload": "Pixielity\\ComposerAutoload\\Facades\\ComposerAutoloadFacade"
             }
         }
     },
@@ -71,14 +71,8 @@
             "@format-check",
             "@test"
         ],
-        "post-autoload-dump": [
-            "Modules\\ComposerAutoload\\Installer\\ComposerAutoloadInstaller::install"
-        ],
-        "post-install-cmd": [
-            "Modules\\ComposerAutoload\\Installer\\ComposerAutoloadInstaller::install"
-        ],
-        "post-update-cmd": [
-            "Modules\\ComposerAutoload\\Installer\\ComposerAutoloadInstaller::install"
+         "post-install-cmd": [
+             "Pixielity\\ComposerAutoload\\Installer\\ComposerAutoloadInstaller::install"
         ]
     },
     "config": {

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Modules\ComposerAutoload\Services;
+namespace Pixielity\ComposerAutoload\Services;
 
-use Modules\ComposerAutoload\Interfaces\NamespaceMapInterface;
+use Pixielity\ComposerAutoload\Interfaces\NamespaceMapInterface;
 
 /**
  * Class NamespaceMap

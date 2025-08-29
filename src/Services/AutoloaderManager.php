@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Modules\ComposerAutoload\Services;
+namespace Pixielity\ComposerAutoload\Services;
 
-use Modules\ComposerAutoload\Interfaces\AutoloaderInterface;
-use Modules\ComposerAutoload\Interfaces\ClassMapInterface;
-use Modules\ComposerAutoload\Interfaces\NamespaceMapInterface;
+use Pixielity\ComposerAutoload\Interfaces\AutoloaderInterface;
+use Pixielity\ComposerAutoload\Interfaces\ClassMapInterface;
+use Pixielity\ComposerAutoload\Interfaces\NamespaceMapInterface;
 
 /**
  * Class AutoloaderManager

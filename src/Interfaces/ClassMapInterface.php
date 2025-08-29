@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\ComposerAutoload\Interfaces;
+namespace Pixielity\ComposerAutoload\Interfaces;
 
 /**
  * Interface ClassMapInterface

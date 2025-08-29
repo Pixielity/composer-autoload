@@ -1,9 +1,9 @@
 <?php
 
-namespace Modules\ComposerAutoload\Commands;
+namespace Pixielity\ComposerAutoload\Commands;
 
 use Illuminate\Console\Command;
-use Modules\ComposerAutoload\Services\AutoloadGenerator;
+use Pixielity\ComposerAutoload\Services\AutoloadGenerator;
 
 class GenerateAutoloadCommand extends Command
 {

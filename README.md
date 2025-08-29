@@ -36,7 +36,7 @@ composer require modules/composer-autoload
    ```php
    'providers' => [
        // Other providers...
-       Modules\ComposerAutoload\Providers\ComposerAutoloadServiceProvider::class,
+       Pixielity\ComposerAutoload\Providers\ComposerAutoloadServiceProvider::class,
    ],
    ```
 
@@ -106,9 +106,9 @@ You can also use JSON configuration files:
 ### Basic Usage
 
 ```php
-use Modules\ComposerAutoload\Services\AutoloaderManager;
-use Modules\ComposerAutoload\Services\ClassMap;
-use Modules\ComposerAutoload\Services\NamespaceMap;
+use Pixielity\ComposerAutoload\Services\AutoloaderManager;
+use Pixielity\ComposerAutoload\Services\ClassMap;
+use Pixielity\ComposerAutoload\Services\NamespaceMap;
 
 // Create autoloader
 $autoloader = new AutoloaderManager();
@@ -131,12 +131,12 @@ $autoloader->register();
 
 ```php
 // Via service container
-$autoloader = app(Modules\ComposerAutoload\Interfaces\AutoloaderInterface::class);
+$autoloader = app(Pixielity\ComposerAutoload\Interfaces\AutoloaderInterface::class);
 $autoloader->addNamespace('MyNamespace\', '/path/to/namespace');
 $autoloader->register();
 
 // Via dependency injection
-use Modules\ComposerAutoload\Interfaces\AutoloaderInterface;
+use Pixielity\ComposerAutoload\Interfaces\AutoloaderInterface;
 
 class MyController extends Controller
 {
@@ -151,8 +151,8 @@ class MyController extends Controller
 ### Configuration-Based Setup
 
 ```php
-use Modules\ComposerAutoload\Config\AutoloadConfig;
-use Modules\ComposerAutoload\Services\AutoloaderManager;
+use Pixielity\ComposerAutoload\Config\AutoloadConfig;
+use Pixielity\ComposerAutoload\Services\AutoloaderManager;
 
 // Load from file
 $config = new AutoloadConfig();
@@ -247,7 +247,7 @@ Check the `Examples/BasicUsageExample.php` file for comprehensive usage examples
 Run examples:
 
 ```php
-use Modules\ComposerAutoload\Examples\BasicUsageExample;
+use Pixielity\ComposerAutoload\Examples\BasicUsageExample;
 
 $example = new BasicUsageExample();
 $example->runAllExamples();
@@ -318,7 +318,7 @@ php artisan module:enable ComposerAutoload
 
 2. Publish configuration (optional):
 ```bash
-php artisan vendor:publish --provider="Modules\ComposerAutoload\Providers\ComposerAutoloadServiceProvider" --tag="config"
+php artisan vendor:publish --provider="Pixielity\ComposerAutoload\Providers\ComposerAutoloadServiceProvider" --tag="config"
 ```
 
 ## Configuration
@@ -342,7 +342,7 @@ The main configuration file is located at `src/modules/ComposerAutoload/config/c
 ### Basic Usage with Facade
 
 ```php
-use Modules\ComposerAutoload\Facades\ComposerAutoloader;
+use Pixielity\ComposerAutoload\Facades\ComposerAutoloader;
 
 // Initialize the autoloader with configuration
 ComposerAutoloader::initialize([
@@ -371,7 +371,7 @@ echo "Classes discovered: " . $stats['classes_discovered'];
 
 ```php
 // Get the autoloader manager
-$autoloader = app(Modules\ComposerAutoload\Interfaces\AutoloaderManagerInterface::class);
+$autoloader = app(Pixielity\ComposerAutoload\Interfaces\AutoloaderManagerInterface::class);
 
 // Or use the alias
 $autoloader = app('composer.autoloader');
@@ -390,9 +390,9 @@ $autoloader->refresh();
 ### Direct Service Usage
 
 ```php
-use Modules\ComposerAutoload\Interfaces\ClassLoaderInterface;
-use Modules\ComposerAutoload\Interfaces\ClassRegistryInterface;
-use Modules\ComposerAutoload\Interfaces\ClassDiscoveryInterface;
+use Pixielity\ComposerAutoload\Interfaces\ClassLoaderInterface;
+use Pixielity\ComposerAutoload\Interfaces\ClassRegistryInterface;
+use Pixielity\ComposerAutoload\Interfaces\ClassDiscoveryInterface;
 
 // Class Loader - PSR-4 autoloading
 $classLoader = app(ClassLoaderInterface::class);
@@ -413,7 +413,7 @@ $classes = $discovery->discoverClasses('/path/to/scan', 'BaseNamespace');
 ### Custom Class Discovery
 
 ```php
-use Modules\ComposerAutoload\Services\ClassDiscovery;
+use Pixielity\ComposerAutoload\Services\ClassDiscovery;
 
 $discovery = new ClassDiscovery();
 
@@ -434,8 +434,8 @@ $classInfo = $discovery->extractClassInfo('/path/to/SomeClass.php');
 ### Using Helper Classes
 
 ```php
-use Modules\ComposerAutoload\Helpers\NamespaceHelper;
-use Modules\ComposerAutoload\Helpers\FileHelper;
+use Pixielity\ComposerAutoload\Helpers\NamespaceHelper;
+use Pixielity\ComposerAutoload\Helpers\FileHelper;
 
 // Namespace operations
 $normalized = NamespaceHelper::normalize('App\\Custom\\Classes');
@@ -465,7 +465,7 @@ COMPOSER_AUTOLOAD_DEBUG=false
 #### Runtime Configuration
 
 ```php
-use Modules\ComposerAutoload\Facades\ComposerAutoloader;
+use Pixielity\ComposerAutoload\Facades\ComposerAutoloader;
 
 ComposerAutoloader::initialize([
     'autoloader' => [
@@ -496,17 +496,17 @@ ComposerAutoloader::initialize([
 // Register module directories
 ComposerAutoloader::registerDirectory(
     base_path('modules/blog'),
-    'Modules\\Blog'
+    'Pixielity\\Blog'
 );
 
 ComposerAutoloader::registerDirectory(
     base_path('modules/shop'),
-    'Modules\\Shop'
+    'Pixielity\\Shop'
 );
 
 // Now you can use classes like:
-// new Modules\Blog\Services\PostService();
-// new Modules\Shop\Models\Product();
+// new Pixielity\Blog\Services\PostService();
+// new Pixielity\Shop\Models\Product();
 ```
 
 ### 2. Plugin System
@@ -785,8 +785,8 @@ if (!function_exists('customModuleAutoloader')) {
     function customModuleAutoloader(string $class): bool
     {
         $moduleMap = [
-            'Modules\\Auth\\' => '/path/to/src/modules/Auth/src/',
-            'Modules\\ComposerAutoload\\' => '/path/to/src/modules/ComposerAutoload/src/',
+            'Pixielity\\Auth\\' => '/path/to/src/modules/Auth/src/',
+            'Pixielity\\ComposerAutoload\\' => '/path/to/src/modules/ComposerAutoload/src/',
         ];
 
         foreach ($moduleMap as $namespace => $path) {

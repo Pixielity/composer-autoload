@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\ComposerAutoload\Installer;
+namespace Pixielity\ComposerAutoload\Installer;
 
 use Composer\IO\IOInterface;
 use Composer\Script\Event;
@@ -290,7 +290,7 @@ class ComposerAutoloadInstaller
         }
 
         // Add service provider to the array
-        $providerLine = "    Modules\\ComposerAutoload\\Providers\\ComposerAutoloadServiceProvider::class,\n";
+        $providerLine = "    Pixielity\\ComposerAutoload\\Providers\\ComposerAutoloadServiceProvider::class,\n";
 
         $updatedContent = str_replace(
             "return [\n",

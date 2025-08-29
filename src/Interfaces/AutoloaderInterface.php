@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\ComposerAutoload\Interfaces;
+namespace Pixielity\ComposerAutoload\Interfaces;
 
 /**
  * Interface AutoloaderInterface
@@ -69,10 +69,10 @@ interface AutoloaderInterface
     /**
      * Get the class map instance
      */
-    public function getClassMap(): \Modules\ComposerAutoload\Interfaces\ClassMapInterface;
+    public function getClassMap(): \Pixielity\ComposerAutoload\Interfaces\ClassMapInterface;
 
     /**
      * Get the namespace map instance
      */
-    public function getNamespaceMap(): \Modules\ComposerAutoload\Interfaces\NamespaceMapInterface;
+    public function getNamespaceMap(): \Pixielity\ComposerAutoload\Interfaces\NamespaceMapInterface;
 }

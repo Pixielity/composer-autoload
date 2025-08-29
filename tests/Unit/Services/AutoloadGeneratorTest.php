@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Modules\ComposerAutoload\Tests\Unit\Services;
+namespace Pixielity\ComposerAutoload\Tests\Unit\Services;
 
 use Illuminate\Container\Container;
 use Illuminate\Support\Facades\File;
-use Modules\ComposerAutoload\Services\AutoloadGenerator;
+use Pixielity\ComposerAutoload\Services\AutoloadGenerator;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
@@ -98,12 +98,12 @@ class AutoloadGeneratorTest extends TestCase
     {
         // Create module structure
         $this->createTestModule('TestModule1', [
-            'Modules\\TestModule1\\' => 'src/',
+            'Pixielity\\TestModule1\\' => 'src/',
         ]);
 
         $this->createTestModule('TestModule2', [
-            'Modules\\TestModule2\\' => 'src/',
-            'Modules\\TestModule2\\Models\\' => 'src/Models/',
+            'Pixielity\\TestModule2\\' => 'src/',
+            'Pixielity\\TestModule2\\Models\\' => 'src/Models/',
         ]);
 
         // Mock File facade for module discovery
@@ -131,7 +131,7 @@ class AutoloadGeneratorTest extends TestCase
             ->andReturn(json_encode([
                 'autoload' => [
                     'psr-4' => [
-                        'Modules\\TestModule1\\' => 'src/',
+                        'Pixielity\\TestModule1\\' => 'src/',
                     ],
                 ],
             ]));
@@ -141,8 +141,8 @@ class AutoloadGeneratorTest extends TestCase
             ->andReturn(json_encode([
                 'autoload' => [
                     'psr-4' => [
-                        'Modules\\TestModule2\\' => 'src/',
-                        'Modules\\TestModule2\\Models\\' => 'src/Models/',
+                        'Pixielity\\TestModule2\\' => 'src/',
+                        'Pixielity\\TestModule2\\Models\\' => 'src/Models/',
                     ],
                 ],
             ]));
@@ -215,14 +215,14 @@ class AutoloadGeneratorTest extends TestCase
             'TestModule1' => [
                 'path' => '/path/to/TestModule1',
                 'psr4' => [
-                    'Modules\\TestModule1\\' => 'src/',
+                    'Pixielity\\TestModule1\\' => 'src/',
                 ],
             ],
             'TestModule2' => [
                 'path' => '/path/to/TestModule2',
                 'psr4' => [
-                    'Modules\\TestModule2\\' => 'src/',
-                    'Modules\\TestModule2\\Models\\' => 'src/Models/',
+                    'Pixielity\\TestModule2\\' => 'src/',
+                    'Pixielity\\TestModule2\\Models\\' => 'src/Models/',
                 ],
             ],
         ];
@@ -234,9 +234,9 @@ class AutoloadGeneratorTest extends TestCase
         $result = $generateMappingsMethod->invoke($this->generator, $modules);
 
         $this->assertIsString($result);
-        $this->assertStringContains("'Modules\\TestModule1\\'", $result);
-        $this->assertStringContains("'Modules\\TestModule2\\'", $result);
-        $this->assertStringContains("'Modules\\TestModule2\\Models\\'", $result);
+        $this->assertStringContains("'Pixielity\\TestModule1\\'", $result);
+        $this->assertStringContains("'Pixielity\\TestModule2\\'", $result);
+        $this->assertStringContains("'Pixielity\\TestModule2\\Models\\'", $result);
         $this->assertStringContains('/path/to/TestModule1/src/', $result);
         $this->assertStringContains('/path/to/TestModule2/src/', $result);
         $this->assertStringContains('/path/to/TestModule2/src/Models/', $result);
@@ -314,7 +314,7 @@ class AutoloadGeneratorTest extends TestCase
 
     public function test_generate_autoload_content(): void
     {
-        $mappings = "'Modules\\Test\\' => '/path/to/test'";
+        $mappings = "'Pixielity\\Test\\' => '/path/to/test'";
         $initializers = "require_once '/path/to/bootstrap.php';";
 
         File::shouldReceive('exists')
@@ -342,7 +342,7 @@ class AutoloadGeneratorTest extends TestCase
         $result = $generateContentMethod->invoke($this->generator, $mappings, $initializers);
 
         $this->assertIsString($result);
-        $this->assertStringContains("'Modules\\Test\\'", $result);
+        $this->assertStringContains("'Pixielity\\Test\\'", $result);
         $this->assertStringContains('/path/to/test', $result);
         $this->assertStringContains('require_once \'/path/to/bootstrap.php\';', $result);
         $this->assertStringNotContains('{{MODULE_MAPPINGS}}', $result);

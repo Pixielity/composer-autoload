@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\ComposerAutoload\Services;
+namespace Pixielity\ComposerAutoload\Services;
 
 use Illuminate\Support\Facades\File;
 

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Modules\ComposerAutoload\Tests\Unit\Services;
+namespace Pixielity\ComposerAutoload\Tests\Unit\Services;
 
-use Modules\ComposerAutoload\Interfaces\NamespaceMapInterface;
-use Modules\ComposerAutoload\Services\NamespaceMap;
+use Pixielity\ComposerAutoload\Interfaces\NamespaceMapInterface;
+use Pixielity\ComposerAutoload\Services\NamespaceMap;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;

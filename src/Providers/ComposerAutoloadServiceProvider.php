@@ -2,19 +2,20 @@
 
 declare(strict_types=1);
 
-namespace Modules\ComposerAutoload\Providers;
+namespace Pixielity\ComposerAutoload\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Modules\ComposerAutoload\Commands\GenerateAutoloadCommand;
-use Modules\ComposerAutoload\Config\AutoloadConfig;
-use Modules\ComposerAutoload\Interfaces\AutoloaderInterface;
-use Modules\ComposerAutoload\Interfaces\ClassMapInterface;
-use Modules\ComposerAutoload\Interfaces\ConfigInterface;
-use Modules\ComposerAutoload\Interfaces\NamespaceMapInterface;
-use Modules\ComposerAutoload\Services\AutoloaderManager;
-use Modules\ComposerAutoload\Services\AutoloadGenerator;
-use Modules\ComposerAutoload\Services\ClassMap;
-use Modules\ComposerAutoload\Services\NamespaceMap;
+use Pixielity\ComposerAutoload\Commands\GenerateAutoloadCommand;
+use Pixielity\ComposerAutoload\Config\AutoloadConfig;
+use Pixielity\ComposerAutoload\Interfaces\AutoloaderInterface;
+use Pixielity\ComposerAutoload\Interfaces\ClassMapInterface;
+use Pixielity\ComposerAutoload\Interfaces\ConfigInterface;
+use Pixielity\ComposerAutoload\Interfaces\NamespaceMapInterface;
+use Pixielity\ComposerAutoload\Services\AutoloaderManager;
+use Pixielity\ComposerAutoload\Services\AutoloadGenerator;
+use Pixielity\ComposerAutoload\Services\ClassMap;
+use Pixielity\ComposerAutoload\Services\NamespaceMap;
+use Pixielity\ComposerAutoload\Installer\ComposerAutoloadInstaller;
 
 /**
  * Class ComposerAutoloadServiceProvider
@@ -64,6 +65,9 @@ class ComposerAutoloadServiceProvider extends ServiceProvider
 
         // Register convenience alias
         $this->app->alias(AutoloaderInterface::class, 'composer-autoload');
+        
+        // Run auto-installer if not already installed
+        $this->runAutoInstaller();
     }
 
     /**
@@ -137,6 +141,38 @@ class ComposerAutoloadServiceProvider extends ServiceProvider
             // Log error or handle gracefully
             if ($this->app->bound('log')) {
                 $this->app['log']->error('Failed to load composer autoload configuration: '.$e->getMessage());
+            }
+        }
+    }
+    
+    /**
+     * Run the auto-installer if not already installed
+     */
+    protected function runAutoInstaller(): void
+    {
+        try {
+            // Only run in console mode to avoid running during web requests
+            if (!$this->app->runningInConsole()) {
+                return;
+            }
+            
+            // Check if already installed by looking for the bootstrap file
+            $bootstrapFile = base_path('bootstrap/autoload.php');
+            if (file_exists($bootstrapFile)) {
+                $content = file_get_contents($bootstrapFile);
+                // Check if it contains our signature
+                if (strpos($content, 'ConfigurableDiscoveryManager') !== false) {
+                    return; // Already installed
+                }
+            }
+            
+            // Run the installer
+            ComposerAutoloadInstaller::installStandalone(base_path());
+            
+        } catch (\Exception $e) {
+            // Log error but don't throw - we don't want package installation to fail
+            if ($this->app->bound('log')) {
+                $this->app['log']->warning('ComposerAutoload auto-installer failed: ' . $e->getMessage());
             }
         }
     }

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\ComposerAutoload\Services;
+namespace Pixielity\ComposerAutoload\Services;
 
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
@@ -151,7 +151,7 @@ class ClassDiscovery
     /**
      * Auto-discover and register namespaces for an autoloader
      *
-     * @param  \Modules\ComposerAutoload\Interfaces\AutoloaderInterface  $autoloader
+     * @param  \Pixielity\ComposerAutoload\Interfaces\AutoloaderInterface  $autoloader
      */
     public function autoDiscoverAndRegister($autoloader, array $directories, array $options = []): array
     {
@@ -186,7 +186,7 @@ class ClassDiscovery
     /**
      * Scan for module directories and auto-register them
      *
-     * @param  \Modules\ComposerAutoload\Interfaces\AutoloaderInterface  $autoloader
+     * @param  \Pixielity\ComposerAutoload\Interfaces\AutoloaderInterface  $autoloader
      */
     public function discoverModules($autoloader, string $modulesDirectory, string $baseNamespace = 'Modules', array $options = []): array
     {

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Modules\ComposerAutoload\Tests\Unit\Services;
+namespace Pixielity\ComposerAutoload\Tests\Unit\Services;
 
-use Modules\ComposerAutoload\Interfaces\ClassMapInterface;
-use Modules\ComposerAutoload\Services\ClassMap;
+use Pixielity\ComposerAutoload\Interfaces\ClassMapInterface;
+use Pixielity\ComposerAutoload\Services\ClassMap;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
